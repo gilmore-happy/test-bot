@@ -1,0 +1,93 @@
+`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````// Add this import to the existing imports from './knowledge.js'
+import { 
+  getRepositoryInfo, 
+  getComponentInfo, 
+  getRecommendations, 
+  searchKnowledgeBase,
+  getAnchorDocumentation  // Add this line
+} from './knowledge.js';
+
+// Add these resources to the resources list in setupResourceHandlers()
+{
+  uri: `solana-hft://repositories/anchor`,
+  name: `Anchor Framework`,
+  mimeType: 'application/json',
+  description: 'Information about the Anchor Framework for Solana development',
+},
+{
+  uri: `solana-hft://docs/anchor`,
+  name: `Anchor Documentation`,
+  mimeType: 'text/html',
+  description: 'Complete documentation for the Anchor Framework',
+},
+
+// Add these resource templates to the resourceTemplates list in setupResourceHandlers()
+{
+  uriTemplate: 'solana-hft://docs/anchor/{section}',
+  name: 'Anchor Documentation Section',
+  mimeType: 'text/html',
+  description: 'Documentation section for the Anchor Framework',
+},
+{
+  uriTemplate: 'solana-hft://docs/anchor/{section}/{page}',
+  name: 'Anchor Documentation Page',
+  mimeType: 'text/html',
+  description: 'Specific documentation page for the Anchor Framework',
+},
+
+// Add this code to the ReadResourceRequestSchema handler before the final throw statement
+// Handle Anchor documentation
+if (uri.startsWith('solana-hft://docs/anchor/')) {
+  const path = uri.replace('solana-hft://docs/anchor/', '');
+  return {
+    contents: [
+      {
+        uri: request.params.uri,
+        mimeType: 'text/html',
+        text: getAnchorDocumentation(path),
+      },
+    ],
+  };
+}
+
+// Handle Anchor main documentation page
+if (uri === 'solana-hft://docs/anchor') {
+  return {
+    contents: [
+      {
+        uri: request.params.uri,
+        mimeType: 'text/html',
+        text: getAnchorDocumentation(''),
+      },
+    ],
+  };
+}
+
+// Add this tool to the tools list in setupToolHandlers()
+{
+  name: 'get_anchor_documentation',
+  description: 'Get Anchor Framework documentation',
+  inputSchema: {
+    type: 'object',
+    properties: {
+      path: {
+        type: 'string',
+        description: 'Documentation path (e.g., "installation", "basics/pda")',
+      },
+    },
+    required: [],
+  },
+},
+
+// Add this case to the CallToolRequestSchema handler switch statement
+case 'get_anchor_documentation': {
+  const { path = '' } = request.params.arguments as { path?: string };
+  return {
+    content: [
+      {
+        type: 'text',
+        text: getAnchorDocumentation(path),
+      },
+    ],
+  };
+}

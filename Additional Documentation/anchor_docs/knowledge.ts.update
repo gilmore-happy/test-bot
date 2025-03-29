@@ -1,0 +1,79 @@
+// Add these imports at the top of the file
+import fs from 'fs';
+import path from 'path';
+
+// Add this function after the existing functions
+/**
+ * Get Anchor documentation content
+ */
+export function getAnchorDocumentation(docPath: string): string {
+  // Base directory for Anchor documentation
+  const baseDir = path.resolve(__dirname, '../../Additional Documentation/anchor_docs/simple-pages');
+  
+  let filePath: string;
+  
+  if (!docPath || docPath === '') {
+    // Main documentation page
+    filePath = path.join(baseDir, 'index.html');
+  } else if (docPath.includes('/')) {
+    // Section with page
+    filePath = path.join(baseDir, `${docPath.replace('/', '-')}.html`);
+  } else {
+    // Just a section
+    filePath = path.join(baseDir, `${docPath}.html`);
+  }
+  
+  try {
+    if (fs.existsSync(filePath)) {
+      return fs.readFileSync(filePath, 'utf8');
+    } else {
+      return `<html><body><h1>Documentation Not Found</h1><p>The requested Anchor documentation page "${docPath}" was not found.</p></body></html>`;
+    }
+  } catch (error) {
+    console.error(`Error reading Anchor documentation: ${error}`);
+    return `<html><body><h1>Error</h1><p>An error occurred while reading the Anchor documentation: ${error}</p></body></html>`;
+  }
+}
+
+// Add this case to the getRepositoryInfo function
+case 'anchor':
+  return {
+    name: 'Anchor Framework',
+    url: 'https://github.com/coral-xyz/anchor',
+    description: 'Anchor is a framework for Solana's Sealevel runtime providing several convenient developer tools for writing smart contracts.',
+    key_components: [
+      {
+        name: 'lang',
+        description: 'Rust eDSL for writing Solana programs',
+        potential_use: 'Simplified development of Solana programs with built-in security features'
+      },
+      {
+        name: 'client',
+        description: 'TypeScript and Rust client libraries',
+        potential_use: 'Strongly typed interfaces for interacting with Anchor programs'
+      },
+      {
+        name: 'spl',
+        description: 'CPI clients for SPL programs',
+        potential_use: 'Easy integration with SPL tokens and other SPL programs'
+      },
+      {
+        name: 'cli',
+        description: 'Command line interface for managing Anchor projects',
+        potential_use: 'Streamlined workflow for building, testing, and deploying Solana programs'
+      }
+    ],
+    status: 'Active development'
+  };
+
+// Add this to the searchKnowledgeBase function
+// Search Anchor documentation
+if (query.toLowerCase().includes('anchor')) {
+  results.push({
+    type: 'documentation',
+    title: 'Anchor Framework Documentation',
+    description: 'Complete documentation for the Anchor Framework',
+    url: 'solana-hft://docs/anchor',
+    relevance: 0.9
+  });
+}

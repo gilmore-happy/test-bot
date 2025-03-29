@@ -1,0 +1,70 @@
+[package]
+name = "solana-hft-execution"
+version = "0.1.0"
+edition = "2021"
+description = "Solana HFT Bot - execution engine module"
+authors = ["Your Name <your.email@example.com>"]
+repository = "https://github.com/yourusername/solana-hft-bot"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+# Workspace dependencies
+tokio = { workspace = true }
+futures = { workspace = true }
+solana-client = { workspace = true }
+solana-sdk = { workspace = true }
+solana-transaction-status = { workspace = true }
+solana-program = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+tracing = { workspace = true }
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+parking_lot = { workspace = true }
+dashmap = { workspace = true }
+chrono = { workspace = true }
+async-trait = { workspace = true }
+
+# Internal crate dependencies
+solana-hft-network = { path = "../network" }
+solana-hft-rpc = { path = "../rpc" }
+
+# Crate-specific dependencies
+jito-tip-distribution = { workspace = true, optional = true }
+jito-bundle = { workspace = true, optional = true }
+jito-searcher-client = { workspace = true, optional = true }
+jito-shredstream-proxy = { workspace = true, optional = true }
+
+# Optimization dependencies
+crossbeam-queue = "0.3.8"
+crossbeam-utils = "0.8.16"
+rayon = "1.8.0"
+num_cpus = "1.16.0"
+bincode = "1.3.3"
+rand = "0.8.5"
+
+# Hardware-aware dependencies
+hwloc = { version = "0.5.0", optional = true }
+libc = { version = "0.2.147", optional = true }
+
+[features]
+default = ["jito-mock"]  # Changed to use mock by default
+simulation = []  # Enable simulation mode
+jito = ["dep:jito-tip-distribution", "dep:jito-bundle", "dep:jito-searcher-client"]  # Enable Jito MEV features
+jito-full = ["jito", "dep:jito-shredstream-proxy"]  # Enable full Jito features including ShredStream
+jito-mock = []  # Use mock implementations instead of actual Jito dependencies
+hardware-optimizations = ["dep:hwloc", "dep:libc"]  # Enable hardware-aware optimizations
+simd = []  # Enable SIMD optimizations for critical path operations
+
+# Ensure jito and jito-mock features are mutually exclusive
+# This is enforced at compile time
+
+# Note: jito and jito-mock features are mutually exclusive
+
+[[bin]]
+name = "memory_pool_test"
+path = "src/memory_pool_test.rs"
+
+[[bin]]
+name = "simd_benchmark"
+path = "src/simd_benchmark.rs"

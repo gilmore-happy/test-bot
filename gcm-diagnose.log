@@ -1,0 +1,210 @@
+﻿Diagnose log at 2025-03-21T19:29:16Z
+
+AppPath: C:\Program Files\Git\mingw64\bin\git-credential-manager.exe
+InstallDir: C:\Program Files\Git\mingw64\bin\
+Version: 2.6.1+786ab03440ddc82e807a97c0e540f5247e44cec6
+
+------------
+Diagnostic: Environment
+Skipped: False
+Success: True
+Exception: None
+Log:
+OSType: Windows
+OSVersion: 10.0 (build 26100)
+Reading environment variables... OK
+ Variables:
+HOMEPATH=\Users\tonal
+DriverData=C:\Windows\System32\Drivers\DriverData
+COMPUTERNAME=JOHN_GALT
+PROMPT_COMMAND=__vsc_prompt_cmd_original
+MSYSTEM=MINGW64
+CommonProgramFiles(x86)=C:\Program Files (x86)\Common Files
+WINDIR=C:\WINDOWS
+OneDrive=C:\Users\tonal\OneDrive
+VSCODE_GIT_ASKPASS_NODE=C:\Users\tonal\AppData\Local\Programs\Microsoft VS Code\Code.exe
+ProgramFiles(x86)=C:\Program Files (x86)
+CONFIG_SITE=C:/Program Files/Git/etc/config.site
+PROCESSOR_REVISION=7401
+USERDOMAIN=John_Galt
+PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+ORIGINAL_TEMP=C:/Users/tonal/AppData/Local/Temp
+USERNAME=Tonald
+MINGW_PREFIX=C:/Program Files/Git/mingw64
+GIT_EXEC_PATH=C:/Program Files/Git/mingw64/libexec/git-core
+ACLOCAL_PATH=C:\Program Files\Git\mingw64\share\aclocal;C:\Program Files\Git\usr\share\aclocal
+TEMP=C:\Users\tonal\AppData\Local\Temp
+LOCALAPPDATA=C:\Users\tonal\AppData\Local
+MANPATH=C:\Program Files\Git\mingw64\local\man;C:\Program Files\Git\mingw64\share\man;C:\Program Files\Git\usr\local\man;C:\Program Files\Git\usr\share\man;C:\Program Files\Git\usr\man;C:\Program Files\Git\share\man
+TERM=xterm-256color
+PROCESSOR_IDENTIFIER=AMD64 Family 25 Model 116 Stepping 1, AuthenticAMD
+MSYSTEM_CARCH=x86_64
+PROGRAMFILES=C:\Program Files (x86)
+ProgramData=C:\ProgramData
+TERM_PROGRAM_VERSION=1.98.2
+ORIGINAL_TMP=C:/Users/tonal/AppData/Local/Temp
+SYSTEMROOT=C:\WINDOWS
+TERM_PROGRAM=vscode
+PROCESSOR_LEVEL=25
+NUMBER_OF_PROCESSORS=16
+SSH_ASKPASS=C:/Program Files/Git/mingw64/bin/git-askpass.exe
+SHLVL=1
+APPDATA=C:\Users\tonal\AppData\Roaming
+SYSTEMDRIVE=C:
+VSCODE_GIT_ASKPASS_MAIN=c:\Users\tonal\AppData\Local\Programs\Microsoft VS Code\resources\app\extensions\git\dist\askpass-main.js
+PSModulePath=C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+PUBLIC=C:\Users\Public
+VSCODE_GIT_IPC_HANDLE=\\.\pipe\vscode-git-9cd867e699-sock
+HOSTNAME=John_Galt
+MSYSTEM_PREFIX=C:/Program Files/Git/mingw64
+USERDOMAIN_ROAMINGPROFILE=John_Galt
+MSYSTEM_CHOST=x86_64-w64-mingw32
+CHROME_CRASHPAD_PIPE_NAME=\\.\pipe\crashpad_37360_YZJVYXVQKZHHLOZL
+PAGER=cat
+PLINK_PROTOCOL=ssh
+COLORTERM=truecolor
+ProgramW6432=C:\Program Files
+PATH=C:/Program Files/Git/mingw64/libexec/git-core;C:\Users\tonal\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\tonal\bin;C:\Program Files (x86)\VMware\VMware Workstation\bin;C:\Windows\System32;C:\Windows;C:\Windows\System32\wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files (x86)\GnuPG\bin;C:\Program Files\Amazon\AWSCLIV2;C:\Program Files\dotnet;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\Program Files\nodejs;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\Users\tonal\.cargo\bin;C:\Users\tonal\AppData\Local\Programs\Python\Python313\Scripts;C:\Users\tonal\AppData\Local\Programs\Python\Python313;C:\Users\tonal\AppData\Local\Microsoft\WindowsApps;C:\Users\tonal\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\tonal\AppData\Roaming\npm;C:\Users\tonal\.dotnet\tools;C:\Users\tonal\.local\share\solana\install\active_release\bin;C:\Users\tonal\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+MINGW_CHOST=x86_64-w64-mingw32
+GIT_TRACE2_PARENT_SID=6f01f556-549b-41dc-9e0b-e492978bbc9d
+VTE_VERSION=0
+PKG_CONFIG_SYSTEM_LIBRARY_PATH=C:/Program Files/Git/mingw64/lib
+TMPDIR=C:\Users\tonal\AppData\Local\Temp
+TMP=C:\Users\tonal\AppData\Local\Temp
+ORIGINAL_XDG_CURRENT_DESKTOP=undefined
+SHELL=C:\Program Files\Git\usr\bin\bash.exe
+HOME=C:\Users\tonal
+VSCODE_GIT_ASKPASS_EXTRA_ARGS=
+COMSPEC=C:\WINDOWS\system32\cmd.exe
+LOGONSERVER=\\JOHN_GALT
+USERPROFILE=C:\Users\tonal
+DISPLAY=needs-to-be-defined
+COMMONPROGRAMFILES=C:\Program Files (x86)\Common Files
+EFC_4052=1
+_=C:/Program Files/Git/mingw64/bin/git
+PKG_CONFIG_PATH=C:\Program Files\Git\mingw64\lib\pkgconfig;C:\Program Files\Git\mingw64\share\pkgconfig
+CommonProgramW6432=C:\Program Files\Common Files
+HOMEDRIVE=C:
+INFOPATH=C:\Program Files\Git\mingw64\local\info;C:\Program Files\Git\mingw64\share\info;C:\Program Files\Git\usr\local\info;C:\Program Files\Git\usr\share\info;C:\Program Files\Git\usr\info;C:\Program Files\Git\share\info
+MINGW_PACKAGE_PREFIX=mingw-w64-x86_64
+SESSIONNAME=Console
+PWD=C:/Users/tonal/Documents/1HFT Solana Bot
+EXEPATH=C:\Program Files\Git\bin
+LANG=en_US.UTF-8
+PROCESSOR_ARCHITEW6432=AMD64
+ORIGINAL_PATH=C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\tonal\bin;C:\Program Files (x86)\VMware\VMware Workstation\bin;C:\Windows\System32;C:\Windows;C:\Windows\System32\wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files (x86)\GnuPG\bin;C:\Program Files\Amazon\AWSCLIV2;C:\Program Files\dotnet;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\Program Files\nodejs;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\Users\tonal\.cargo\bin;C:\Users\tonal\AppData\Local\Programs\Python\Python313\Scripts;C:\Users\tonal\AppData\Local\Programs\Python\Python313;C:\Users\tonal\AppData\Local\Microsoft\WindowsApps;C:\Users\tonal\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\tonal\AppData\Roaming\npm;C:\Users\tonal\.dotnet\tools;C:\Users\tonal\.local\share\solana\install\active_release\bin;C:\Users\tonal\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand
+PROCESSOR_ARCHITECTURE=x86
+PS1=\[]633;A\]\[\033]0;$TITLEPREFIX:$PWD\007\]\n\[\033[32m\]\u@\h \[\033[35m\]$MSYSTEM \[\033[33m\]\w\[\033[36m\]`__git_ps1`\[\033[0m\]\n$ \[]633;B\]
+OS=Windows_NT
+PKG_CONFIG_SYSTEM_INCLUDE_PATH=C:/Program Files/Git/mingw64/include
+GIT_ASKPASS=c:\Users\tonal\AppData\Local\Programs\Microsoft VS Code\resources\app\extensions\git\dist\askpass.sh
+ALLUSERSPROFILE=C:\ProgramData
+
+
+------------
+Diagnostic: File system
+Skipped: False
+Success: True
+Exception: None
+Log:
+Temporary directory is 'C:\Users\tonal\AppData\Local\Temp\'...
+Checking basic file I/O...
+Writing to temporary file 'C:\Users\tonal\AppData\Local\Temp\637f4e79b6ec2e027f56920d'... OK
+Reading from temporary file 'C:\Users\tonal\AppData\Local\Temp\637f4e79b6ec2e027f56920d'... OK
+Deleting temporary file 'C:\Users\tonal\AppData\Local\Temp\637f4e79b6ec2e027f56920d'... OK
+Testing IFileSystem instance...
+UserHomePath: C:\Users\tonal
+UserDataDirectoryPath: C:\Users\tonal\.gcm
+GetCurrentDirectory(): C:\Users\tonal\Documents\1HFT Solana Bot
+
+------------
+Diagnostic: Networking
+Skipped: False
+Success: True
+Exception: None
+Log:
+Checking networking and HTTP stack...
+Creating HTTP client... OK
+IsNetworkAvailable: True
+Sending HEAD request to http://example.com...Sending HEAD request to https://example.com... OK
+ OK
+Acquiring free TCP port... OK
+Testing local HTTP loopback connections...
+Creating new HTTP listener for http://localhost:62028/... OK
+Waiting for loopback connection... OK
+Writing response... OK
+Waiting for response data... OK
+Loopback connection data OK
+
+------------
+Diagnostic: Git
+Skipped: False
+Success: True
+Exception: None
+Log:
+Getting Git version... OK
+Git version is '2.49.0.windows.1'
+Locating current repository...Git repository at 'C:/Users/tonal/Documents/1HFT Solana Bot/.git'
+ OK
+Listing all Git configuration... OK
+Git configuration:
+file:C:/Program Files/Git/etc/gitconfig	diff.astextplain.textconv=astextplain
+file:C:/Program Files/Git/etc/gitconfig	filter.lfs.clean=git-lfs clean -- %f
+file:C:/Program Files/Git/etc/gitconfig	filter.lfs.smudge=git-lfs smudge -- %f
+file:C:/Program Files/Git/etc/gitconfig	filter.lfs.process=git-lfs filter-process
+file:C:/Program Files/Git/etc/gitconfig	filter.lfs.required=true
+file:C:/Program Files/Git/etc/gitconfig	http.sslbackend=openssl
+file:C:/Program Files/Git/etc/gitconfig	http.sslcainfo=C:/Program Files/Git/mingw64/etc/ssl/certs/ca-bundle.crt
+file:C:/Program Files/Git/etc/gitconfig	core.autocrlf=true
+file:C:/Program Files/Git/etc/gitconfig	core.fscache=true
+file:C:/Program Files/Git/etc/gitconfig	core.symlinks=true
+file:C:/Program Files/Git/etc/gitconfig	pull.rebase=false
+file:C:/Program Files/Git/etc/gitconfig	credential.helper=manager
+file:C:/Program Files/Git/etc/gitconfig	credential.https://dev.azure.com.usehttppath=true
+file:C:/Program Files/Git/etc/gitconfig	init.defaultbranch=master
+file:C:/Users/tonal/.gitconfig	core.editor="C:\Users\tonal\AppData\Local\Programs\Microsoft VS Code\bin\code" --wait
+file:C:/Users/tonal/.gitconfig	credential.helper=
+file:C:/Users/tonal/.gitconfig	credential.helper=C:/Program\ Files/Git/mingw64/bin/git-credential-manager.exe
+file:.git/config	core.repositoryformatversion=0
+file:.git/config	core.filemode=false
+file:.git/config	core.bare=false
+file:.git/config	core.logallrefupdates=true
+file:.git/config	core.symlinks=false
+file:.git/config	core.ignorecase=true
+
+
+------------
+Diagnostic: Credential storage
+Skipped: False
+Success: True
+Exception: None
+Log:
+ICredentialStore instance is of type: CredentialStore
+Writing test credential... OK
+Reading test credential... OK
+Deleting test credential... OK
+
+------------
+Diagnostic: Microsoft authentication (AAD/MSA)
+Skipped: False
+Success: True
+Exception: None
+Log:
+Broker is not enabled.
+Flow type is: Auto
+Gathering MSAL token cache data... OK
+CacheDirectory: C:\Users\tonal\AppData\Local\.IdentityService
+CacheFileName: msal.cache
+CacheFilePath: C:\Users\tonal\AppData\Local\.IdentityService\msal.cache
+Creating cache helper... OK
+Verifying MSAL token cache persistence... OK
+
+------------
+Diagnostic: GitHub API
+Skipped: False
+Success: True
+Exception: None
+Log:
+Using 'https://github.com/' as API target.
+Querying '/meta' endpoint... OK
+

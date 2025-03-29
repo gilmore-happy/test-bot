@@ -1,0 +1,138 @@
+{
+  "default_level": "info",
+  "include_file_line": true,
+  "include_module_path": true,
+  "include_thread_id": true,
+  "include_correlation_id": true,
+  "include_high_precision_timestamps": true,
+  "targets": [
+    {
+      "name": "console",
+      "enabled": true,
+      "level": "info",
+      "format": "PrettyConsole",
+      "path": null,
+      "rotation": null,
+      "retention": null,
+      "settings": {}
+    },
+    {
+      "name": "file",
+      "enabled": true,
+      "level": "debug",
+      "format": "Json",
+      "path": "logs/solana-hft-bot.log",
+      "rotation": {
+        "Compound": {
+          "time": {
+            "Daily": null
+          },
+          "size": {
+            "Size": 104857600
+          }
+        }
+      },
+      "retention": {
+        "days": 7,
+        "max_files": 100,
+        "max_size": 1073741824
+      },
+      "settings": {}
+    },
+    {
+      "name": "error_file",
+      "enabled": true,
+      "level": "error",
+      "format": "Json",
+      "path": "logs/error.log",
+      "rotation": {
+        "Daily": null
+      },
+      "retention": {
+        "days": 30,
+        "max_files": 100,
+        "max_size": 1073741824
+      },
+      "settings": {}
+    },
+    {
+      "name": "performance",
+      "enabled": true,
+      "level": "trace",
+      "format": "Json",
+      "path": "logs/performance.log",
+      "rotation": {
+        "Hourly": null
+      },
+      "retention": {
+        "days": 3,
+        "max_files": 72,
+        "max_size": 536870912
+      },
+      "settings": {}
+    },
+    {
+      "name": "transaction",
+      "enabled": true,
+      "level": "debug",
+      "format": "Json",
+      "path": "logs/transactions.log",
+      "rotation": {
+        "Compound": {
+          "time": {
+            "Daily": null
+          },
+          "size": {
+            "Size": 104857600
+          }
+        }
+      },
+      "retention": {
+        "days": 7,
+        "max_files": 100,
+        "max_size": 1073741824
+      },
+      "settings": {}
+    }
+  ],
+  "log_dir": "logs",
+  "enable_prometheus_metrics": true,
+  "enable_real_time_analysis": true,
+  "enable_critical_error_alerting": true,
+  "alert_webhooks": [],
+  "enable_performance_anomaly_detection": true,
+  "enable_automated_log_scanning": true,
+  "known_error_patterns": [
+    "connection refused",
+    "timeout",
+    "rate limit",
+    "insufficient funds",
+    "transaction simulation failed",
+    "blockhash not found",
+    "account not found",
+    "signature verification failed"
+  ],
+  "enable_adaptive_log_levels": true,
+  "enable_circular_buffers": true,
+  "circular_buffer_size": 10000,
+  "enable_transaction_instrumentation": true,
+  "profile": "Development",
+  "module_levels": {
+    "solana_hft_core": "info",
+    "solana_hft_network": "info",
+    "solana_hft_rpc": "info",
+    "solana_hft_execution": "debug",
+    "solana_hft_arbitrage": "debug",
+    "solana_hft_screening": "info",
+    "solana_hft_risk": "info",
+    "solana_hft_metrics": "info",
+    "solana_hft_logging": "info"
+  },
+  "performance_thresholds": {
+    "network_latency_ms": 100.0,
+    "rpc_request_ms": 500.0,
+    "transaction_confirmation_ms": 5000.0,
+    "order_execution_ms": 1000.0,
+    "strategy_evaluation_ms": 200.0
+  }
+}

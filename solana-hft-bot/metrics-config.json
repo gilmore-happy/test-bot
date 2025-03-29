@@ -1,0 +1,178 @@
+{
+  "enable_prometheus": true,
+  "prometheus_endpoint": "0.0.0.0:9090",
+  "log_metrics": true,
+  "log_interval_seconds": 60,
+  "detailed_metrics": true,
+  "history_size": 1000,
+  "metrics_export": {
+    "enabled": true,
+    "export_interval_seconds": 300,
+    "export_path": "metrics/",
+    "file_format": "json",
+    "retention_days": 7
+  },
+  "module_metrics": {
+    "core": {
+      "enabled": true,
+      "include_strategy_metrics": true,
+      "include_signal_metrics": true
+    },
+    "network": {
+      "enabled": true,
+      "include_latency_histograms": true,
+      "include_throughput_metrics": true,
+      "include_connection_metrics": true
+    },
+    "rpc": {
+      "enabled": true,
+      "include_endpoint_metrics": true,
+      "include_cache_metrics": true,
+      "include_request_metrics": true,
+      "include_rate_limit_metrics": true
+    },
+    "execution": {
+      "enabled": true,
+      "include_transaction_metrics": true,
+      "include_fee_metrics": true,
+      "include_confirmation_metrics": true,
+      "include_retry_metrics": true
+    },
+    "arbitrage": {
+      "enabled": true,
+      "include_opportunity_metrics": true,
+      "include_execution_metrics": true,
+      "include_profit_metrics": true,
+      "include_strategy_metrics": true
+    },
+    "screening": {
+      "enabled": true,
+      "include_token_metrics": true,
+      "include_pool_metrics": true,
+      "include_subscription_metrics": true,
+      "include_opportunity_metrics": true
+    },
+    "risk": {
+      "enabled": true,
+      "include_position_metrics": true,
+      "include_exposure_metrics": true,
+      "include_circuit_breaker_metrics": true,
+      "include_pnl_metrics": true
+    }
+  },
+  "alerts": {
+    "enabled": true,
+    "channels": [
+      {
+        "type": "log",
+        "enabled": true,
+        "min_level": "warning"
+      },
+      {
+        "type": "file",
+        "enabled": true,
+        "min_level": "warning",
+        "path": "logs/alerts.log"
+      }
+    ],
+    "rules": [
+      {
+        "name": "high_latency",
+        "description": "High network latency detected",
+        "metric": "network_latency_ms",
+        "condition": ">",
+        "threshold": 100,
+        "duration_seconds": 60,
+        "severity": "warning"
+      },
+      {
+        "name": "rpc_errors",
+        "description": "High RPC error rate",
+        "metric": "rpc_error_rate",
+        "condition": ">",
+        "threshold": 0.1,
+        "duration_seconds": 300,
+        "severity": "critical"
+      },
+      {
+        "name": "execution_failures",
+        "description": "High transaction failure rate",
+        "metric": "tx_failure_rate",
+        "condition": ">",
+        "threshold": 0.2,
+        "duration_seconds": 300,
+        "severity": "critical"
+      },
+      {
+        "name": "drawdown",
+        "description": "Significant drawdown detected",
+        "metric": "portfolio_drawdown_pct",
+        "condition": ">",
+        "threshold": 5.0,
+        "duration_seconds": 3600,
+        "severity": "critical"
+      }
+    ]
+  },
+  "dashboards": {
+    "enabled": true,
+    "update_interval_seconds": 5,
+    "default_timeframe_minutes": 60,
+    "panels": [
+      {
+        "name": "System Overview",
+        "metrics": [
+          "system_cpu_usage",
+          "system_memory_usage",
+          "system_network_usage",
+          "system_uptime"
+        ]
+      },
+      {
+        "name": "Network Performance",
+        "metrics": [
+          "network_latency_ms",
+          "network_throughput_bps",
+          "network_active_connections",
+          "network_packets_dropped"
+        ]
+      },
+      {
+        "name": "RPC Performance",
+        "metrics": [
+          "rpc_request_rate",
+          "rpc_latency_ms",
+          "rpc_cache_hit_rate",
+          "rpc_error_rate"
+        ]
+      },
+      {
+        "name": "Execution Performance",
+        "metrics": [
+          "tx_success_rate",
+          "tx_confirmation_time_ms",
+          "tx_fee_lamports",
+          "tx_retry_count"
+        ]
+      },
+      {
+        "name": "Arbitrage Performance",
+        "metrics": [
+          "arbitrage_opportunities_found",
+          "arbitrage_opportunities_executed",
+          "arbitrage_profit_usd",
+          "arbitrage_execution_time_ms"
+        ]
+      },
+      {
+        "name": "Risk Metrics",
+        "metrics": [
+          "portfolio_value_usd",
+          "portfolio_exposure_pct",
+          "portfolio_drawdown_pct",
+          "portfolio_profit_loss_usd"
+        ]
+      }
+    ]
+  }
+}

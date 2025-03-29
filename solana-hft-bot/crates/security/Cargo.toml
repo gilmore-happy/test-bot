@@ -1,0 +1,45 @@
+[package]
+name = "solana-hft-security"
+version = "0.1.0"
+edition = "2021"
+description = "Solana HFT Bot - security module"
+authors = ["Your Name <your.email@example.com>"]
+repository = "https://github.com/yourusername/solana-hft-bot"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+# Workspace dependencies
+tokio = { workspace = true }
+futures = { workspace = true }
+solana-client = { workspace = true }
+solana-sdk = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+tracing = { workspace = true }
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+parking_lot = { workspace = true }
+ed25519-dalek = { workspace = true }
+curve25519-dalek = { workspace = true }
+ring = { workspace = true }
+sha2 = { workspace = true }
+hmac = { workspace = true }
+rand = { workspace = true }
+zeroize = { workspace = true }
+
+# New dependencies for HSM and secure communications
+uuid = { version = "1.3", features = ["v4", "serde"] }
+getrandom = "0.2"
+rustls = "0.21"
+rustls-pemfile = "1.0"
+rustls-native-certs = "0.6"
+tokio-rustls = "0.24"
+hex = "0.4"
+tempfile = "3.5"
+socket2 = "0.5"
+
+# Internal crate dependencies
+solana-hft-core = { path = "../core" }
+
+[features]
+default = []

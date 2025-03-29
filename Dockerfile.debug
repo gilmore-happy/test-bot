@@ -1,0 +1,61 @@
+# Dockerfile for Solana HFT Bot Debugging Tools
+FROM debian:bookworm-slim
+
+# Install debugging tools
+RUN apt-get update && apt-get install -y \
+    curl \
+    wget \
+    vim \
+    nano \
+    htop \
+    strace \
+    ltrace \
+    gdb \
+    valgrind \
+    tcpdump \
+    iperf3 \
+    netcat-openbsd \
+    dnsutils \
+    iproute2 \
+    procps \
+    lsof \
+    sysstat \
+    net-tools \
+    jq \
+    python3 \
+    python3-pip \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Python tools for log analysis
+RUN pip3 install --no-cache-dir \
+    pandas \
+    matplotlib \
+    seaborn \
+    jupyter \
+    notebook \
+    requests \
+    plotly
+
+# Create app directory
+WORKDIR /app
+
+# Create directories for logs and analysis
+RUN mkdir -p /app/logs /app/analysis
+
+# Copy analysis scripts
+COPY scripts/debug/*.py /app/scripts/
+COPY scripts/debug/*.sh /app/scripts/
+
+# Make scripts executable
+RUN chmod +x /app/scripts/*.sh
+
+# Set environment variables
+ENV PYTHONUNBUFFERED=1
+ENV JUPYTER_RUNTIME_DIR=/tmp/jupyter_runtime
+ENV JUPYTER_DATA_DIR=/app/.jupyter
+
+# Expose port for Jupyter Notebook
+EXPOSE 8888
+
+# Default command
+CMD ["bash"]

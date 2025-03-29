@@ -1,0 +1,85 @@
+version: '3.8'
+
+services:
+  # Override core-bot service for development
+  core-bot:
+    build:
+      target: development
+    volumes:
+      # Mount source code for hot reloading
+      - ./solana-hft-bot:/app/src
+      # Mount config files directly
+      - ./solana-hft-bot/config.json:/app/config/config.json
+      - ./solana-hft-bot/logging-config.json:/app/config/logging-config.json
+      - ./solana-hft-bot/metrics-config.json:/app/config/metrics-config.json
+    environment:
+      - RUST_BACKTRACE=full
+      - RUST_LOG=debug
+      # Development-specific environment variables
+      - DEV_MODE=true
+      - SIMULATE_TRANSACTIONS=true
+    # Use a different command for development
+    command: ["--config", "/app/config/config.json", "--dev"]
+    # Development-specific health check
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9090/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  # Override dashboard-ui service for development
+  dashboard-ui:
+    build:
+      target: builder
+    volumes:
+      # Mount source code for hot reloading
+      - ./src:/app/src
+      - ./public:/app/public
+    environment:
+      - NODE_ENV=development
+      - REACT_APP_API_URL=http://localhost:8080
+    # Use development server instead of production build
+    command: ["npm", "start"]
+    ports:
+      - "3000:3000"
+
+  # Add development-specific services
+  
+  # Debug tools container
+  debug-tools:
+    image: solana-hft-debug:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.debug
+    container_name: solana-hft-debug
+    networks:
+      - hft-internal
+    volumes:
+      - logs-volume:/logs
+      - ./solana-hft-bot:/app/src
+    environment:
+      - RUST_BACKTRACE=full
+    command: ["tail", "-f", "/dev/null"]  # Keep container running
+
+  # Performance testing container
+  perf-test:
+    image: solana-hft-perf-test:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    container_name: solana-hft-perf-test
+    networks:
+      - hft-internal
+    volumes:
+      - ./solana-hft-bot:/app/src
+      - ./performance-tests:/app/tests
+    environment:
+      - RUST_BACKTRACE=full
+      - TEST_MODE=true
+    command: ["--test", "--config", "/app/config/config.json"]
+    depends_on:
+      - core-bot
+      - database
+      - redis

@@ -1,0 +1,210 @@
+{
+  "name": "Solana HFT Bot",
+  "environment": "baremetal",
+  "cloud_provider": null,
+  "rpc_url": "https://api.mainnet-beta.solana.com",
+  "websocket_url": "wss://api.mainnet-beta.solana.com",
+  "keypair_path": "~/.config/solana/id.json",
+  "hardware": {
+    "cpu": {
+      "physical_cores": null,
+      "logical_threads": null,
+      "frequency_mhz": null,
+      "use_cpu_pinning": true,
+      "isolated_cores": [0, 1, 2, 3],
+      "numa_aware": true,
+      "numa_node": 0
+    },
+    "memory": {
+      "total_mb": null,
+      "use_huge_pages": true,
+      "huge_page_size_kb": 2048,
+      "huge_pages_count": 1024,
+      "allocation_strategy": "aggressive"
+    },
+    "storage": {
+      "data_dir": "~/.solana-hft/data",
+      "log_dir": "~/.solana-hft/logs",
+      "cache_dir": "~/.solana-hft/cache",
+      "max_disk_usage_mb": 10240
+    },
+    "network_interfaces": [
+      {
+        "name": "eth0",
+        "enabled": true,
+        "ip_address": null,
+        "mac_address": null,
+        "speed_mbps": null,
+        "hardware_timestamping": true,
+        "tcp_udp_offload": true,
+        "rdma_support": false,
+        "rss_rfs_support": true
+      }
+    ],
+    "profile": "high_end_bare_metal"
+  },
+  "network": {
+    "kernel_bypass_mode": "dpdk",
+    "dpdk": {
+      "enabled": true,
+      "eal_args": [
+        "solana-hft-bot",
+        "-l",
+        "0-3",
+        "--huge-dir",
+        "/mnt/huge",
+        "--socket-mem",
+        "1024,0"
+      ],
+      "port_id": 0,
+      "rx_queues": 4,
+      "tx_queues": 4,
+      "rx_ring_size": 1024,
+      "tx_ring_size": 1024,
+      "mempool_size": 8192,
+      "mempool_cache_size": 256,
+      "mempool_socket_id": 0
+    },
+    "io_uring": {
+      "enabled": false,
+      "sq_entries": 4096,
+      "cq_entries": 4096,
+      "flags": 0
+    },
+    "tcp_optimizations": {
+      "tcp_nodelay": true,
+      "tcp_quickack": true,
+      "tcp_fastopen": true,
+      "tcp_cork": false,
+      "tcp_defer_accept": true,
+      "keepalive_interval_secs": 5,
+      "connection_backlog": 1024
+    },
+    "socket_buffers": {
+      "send_buffer_size": 8388608,
+      "recv_buffer_size": 8388608,
+      "dynamic_buffer_sizing": true,
+      "max_buffer_size": 33554432
+    },
+    "zero_copy": {
+      "enabled": true,
+      "memory_map_size": 268435456,
+      "hardware_offloading": true,
+      "direct_memory_access": false
+    },
+    "endpoints": {
+      "rpc_endpoints": [
+        {
+          "url": "https://api.mainnet-beta.solana.com",
+          "weight": 1,
+          "region": "global",
+          "features": [],
+          "tier": "free"
+        },
+        {
+          "url": "https://solana-api.projectserum.com",
+          "weight": 1,
+          "region": "global",
+          "features": [],
+          "tier": "free"
+        },
+        {
+          "url": "https://rpc.ankr.com/solana",
+          "weight": 1,
+          "region": "global",
+          "features": [],
+          "tier": "free"
+        }
+      ],
+      "websocket_endpoints": [
+        "wss://api.mainnet-beta.solana.com"
+      ],
+      "selection_strategy": "lowestLatency",
+      "connection_pool_size": 5,
+      "connection_timeout_ms": 30000,
+      "keepalive_interval_ms": 15000,
+      "max_connections": 1000,
+      "health_check_interval_ms": 30000
+    },
+    "latency_optimization": {
+      "enabled": true,
+      "build_validator_proximity_map": true,
+      "optimize_routes": true,
+      "connection_keepalive_management": true,
+      "request_coalescing": true,
+      "adaptive_timeouts": true,
+      "base_timeout_ms": 1000,
+      "max_timeout_ms": 30000
+    }
+  },
+  "modules": {
+    "network": {
+      "enabled": true,
+      "config": null
+    },
+    "rpc": {
+      "enabled": true,
+      "config": null
+    },
+    "screening": {
+      "enabled": true,
+      "config": null
+    },
+    "execution": {
+      "enabled": true,
+      "config": null
+    },
+    "arbitrage": {
+      "enabled": true,
+      "config": null
+    },
+    "risk": {
+      "enabled": true,
+      "config": null
+    }
+  },
+  "strategy": {
+    "enabled": true,
+    "run_interval_ms": 1000,
+    "strategies": [
+      {
+        "id": "triangle-arbitrage",
+        "name": "Triangle Arbitrage",
+        "enabled": true,
+        "strategy_type": "arbitrage",
+        "params": {
+          "min_profit_threshold_usd": 10.0,
+          "max_slippage_percent": 1.0,
+          "max_transaction_count": 5,
+          "markets": ["SOL/USDC", "SOL/USDT", "USDC/USDT"]
+        }
+      }
+    ]
+  },
+  "feature_flags": {
+    "networking": {
+      "kernel_bypass_networking": true,
+      "hardware_timestamping": true,
+      "high_frequency_networking": true,
+      "dpdk_support": true,
+      "io_uring_support": false
+    },
+    "cpu": {
+      "cpu_pinning": true,
+      "simd_optimizations": true,
+      "avx_support": true,
+      "avx2_support": true,
+      "avx512_support": false
+    },
+    "memory": {
+      "huge_pages": true,
+      "huge_pages_1gb": false
+    },
+    "capabilities": {
+      "numa_awareness": true,
+      "direct_memory_access": false,
+      "isolated_cpus": true
+    }
+  },
+  "custom": {}
+}

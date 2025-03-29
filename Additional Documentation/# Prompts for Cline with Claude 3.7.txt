@@ -1,0 +1,194 @@
+# Prompts for Cline with Claude 3.7 Sonnet
+
+I'll provide you with a series of prompts to use with Cline. Each prompt builds upon the previous one and focuses on a specific aspect of the Solana HFT bot implementation.
+
+## Initial Project Setup Prompt
+
+```
+I'm implementing a Solana High-Frequency Trading bot from existing code samples. I have these files saved:
+- project_initialization.sh (setup script)
+- hp_network_layers.rs (network module)
+- hp_rpc_client.rs (RPC module)
+- rtt_screening.rs (screening module)
+- hpt_execution_engine.rs (execution module)
+- hpa.rs (arbitrage module)
+- sim_risk.rs (simulation and risk module)
+- core_command.rs (core module)
+- cli.rs (CLI module)
+
+I'm setting up the project in VS Code and need guidance on:
+1. Running the initialization script correctly
+2. Setting up the Cargo workspace
+3. Creating the proper directory structure
+4. Handling dependencies between modules
+5. Implementing each module in the proper order
+
+Please help me start the implementation process and provide step-by-step instructions for getting the basic project structure set up.
+```
+
+## Module Implementation Prompts
+
+### Core Module Implementation
+
+```
+I'm now working on implementing the Core module for my Solana HFT bot. I have the code in core_command.rs.
+
+Please help me:
+1. Identify all the submodules needed (config.rs, metrics.rs, etc.)
+2. Create each submodule file with proper content
+3. Update imports in the lib.rs file
+4. Ensure all placeholder code is replaced with actual functionality
+5. Validate that the module will compile properly
+
+The Core module is the central command center of the application and coordinates all other modules. I need to ensure it's properly implemented before moving to dependent modules.
+```
+
+### Network Module Implementation
+
+```
+I'm now implementing the Network module for my Solana HFT bot. I have the code in hp_network_layers.rs.
+
+Please help me:
+1. Identify all submodules needed for the Network implementation
+2. Create the proper file structure for this module
+3. Replace placeholder code for DPDK and io_uring with actual implementations
+4. Set up proper zero-copy buffer management
+5. Implement socket optimizations for ultra-low latency
+
+This is a critical performance module, so I need detailed guidance on replacing placeholder implementations with actual code, especially for kernel bypass features.
+```
+
+### RPC Module Implementation
+
+```
+I'm now implementing the RPC module for my Solana HFT bot. I have the code in hp_rpc_client.rs.
+
+Please help me:
+1. Create all required submodules for the RPC client
+2. Implement the cache system properly
+3. Set up the endpoint manager with real functionality
+4. Replace placeholder code for request handling
+5. Implement the rate limiter with proper logic
+
+This module handles all communication with Solana validators, so it needs to be both fast and reliable. Please help me replace any placeholder implementations with proper functionality.
+```
+
+### Screening Module Implementation
+
+```
+I'm implementing the Screening module for my Solana HFT bot. I have the code in rtt_screening.rs.
+
+Please help me:
+1. Set up all required submodules for token screening
+2. Implement the token scoring system completely
+3. Replace placeholder DEX integration code with real implementations
+4. Set up websocket subscriptions properly
+5. Implement token filters with actual logic
+
+This module detects trading opportunities, so I need to ensure all the placeholder code is replaced with functional implementations.
+```
+
+### Execution Module Implementation
+
+```
+I'm implementing the Execution module for my Solana HFT bot. I have the code in hpt_execution_engine.rs.
+
+Please help me:
+1. Create all required submodules
+2. Implement the transaction vault properly
+3. Replace placeholder fee prediction code with actual ML or heuristic-based implementation
+4. Set up proper transaction simulation
+5. Implement Jito bundle support correctly
+
+This module handles all trading execution, so performance is critical. I need to replace all placeholder code with proper implementations.
+```
+
+### Arbitrage Module Implementation
+
+```
+I'm implementing the Arbitrage module for my Solana HFT bot. I have the code in hpa.rs.
+
+Please help me:
+1. Create all required submodules
+2. Implement proper path-finding algorithms
+3. Set up flash loan integration correctly
+4. Implement DEX client interfaces for major Solana DEXes
+5. Replace placeholder code with proper implementations
+
+This module is responsible for finding and executing arbitrage opportunities, so I need to ensure all placeholders are replaced with functional code.
+```
+
+### Risk Module Implementation
+
+```
+I'm implementing the Risk Management module for my Solana HFT bot. I have the code in sim_risk.rs.
+
+Please help me:
+1. Create all required submodules
+2. Implement proper risk models
+3. Set up circuit breakers with actual logic
+4. Implement position management correctly
+5. Replace placeholder code with functional implementations
+
+This module protects the trading system from excessive risk, so I need to ensure all placeholders are replaced with proper risk management logic.
+```
+
+### CLI Module Implementation
+
+```
+I'm implementing the CLI module for my Solana HFT bot. I have the code in cli.rs.
+
+Please help me:
+1. Create all required submodules
+2. Implement the interactive shell properly
+3. Set up display formatters for metrics and status
+4. Implement command handling logic
+5. Replace placeholder code with actual implementations
+
+This module provides the user interface, so I need to ensure it's functional and user-friendly.
+```
+
+## Integration and Testing Prompt
+
+```
+I've implemented all modules of my Solana HFT bot, and now I need to integrate everything and set up testing. 
+
+Please help me:
+1. Create proper integration between all modules
+2. Set up configuration files for each module
+3. Implement a testing strategy for the entire system
+4. Create a simulation scenario to test all components together
+5. Set up proper logging and metrics collection across modules
+
+I need to ensure everything works together seamlessly, especially the interactions between the core module and all other specialized modules.
+```
+
+## Prompt for Handling Placeholder Code
+
+```
+I've noticed that throughout the Solana HFT bot codebase, there are many placeholder implementations marked with comments like "In a real implementation, this would..." or similar.
+
+Please help me identify these placeholders systematically and replace them with actual implementations. Specifically:
+
+1. How can I identify all placeholder code sections?
+2. What patterns should I look for?
+3. How should I prioritize which placeholders to replace first?
+4. For critical components like DPDK, kernel bypass, and ML fee prediction, what real implementations should I use?
+5. How can I ensure the replacements maintain the performance characteristics needed for HFT?
+
+I want to ensure the final implementation is production-ready without performance bottlenecks from placeholder code.
+```
+
+## Additional Tips for Using These Prompts with Cline
+
+1. **Sequential Approach**: Use these prompts in sequence, waiting for each response before moving to the next.
+
+2. **Sharing Context**: For follow-up questions, you can reference previous responses with "In your previous response about [topic]..."
+
+3. **Code Sharing**: When you need to share specific code you're working on, use triple backticks to format it: ```rust [your code] ```
+
+4. **Incremental Building**: After each module implementation, try to compile it to catch issues early.
+
+5. **Saving Responses**: Save important responses from Cline for reference, especially implementation details.
+
+These prompts should give Cline all the context needed to help you properly implement the Solana HFT bot using the files you've saved. Each prompt builds on the previous one and focuses on a specific aspect of the implementation.

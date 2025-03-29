@@ -1,0 +1,274 @@
+{
+  "name": "Solana HFT Bot - Test Environment",
+  "rpc_url": "https://api.devnet.solana.com",
+  "websocket_url": "wss://api.devnet.solana.com",
+  "commitment_config": "confirmed",
+  "keypair_path": null,
+  "module_configs": {
+    "network": {
+      "enabled": true,
+      "config": {
+        "worker_threads": 2,
+        "use_dpdk": false,
+        "use_io_uring": false,
+        "send_buffer_size": 1048576,
+        "recv_buffer_size": 1048576,
+        "connection_timeout": {
+          "secs": 30,
+          "nanos": 0
+        },
+        "keepalive_interval": {
+          "secs": 15,
+          "nanos": 0
+        },
+        "max_connections": 100,
+        "bind_addresses": [],
+        "socket_options": {
+          "tcp_nodelay": true,
+          "tcp_quickack": true,
+          "so_reuseaddr": true,
+          "so_reuseport": true,
+          "so_sndbuf": 1048576,
+          "so_rcvbuf": 1048576,
+          "tcp_fastopen": true,
+          "priority": null,
+          "tos": 16
+        }
+      }
+    },
+    "rpc": {
+      "enabled": true,
+      "config": {
+        "endpoints": [
+          {
+            "url": "https://api.devnet.solana.com",
+            "weight": 1,
+            "region": "global",
+            "features": [],
+            "tier": "free"
+          }
+        ],
+        "websocket_endpoints": [
+          "wss://api.devnet.solana.com"
+        ],
+        "commitment_config": {
+          "commitment": "confirmed"
+        },
+        "connection_pool_size_per_endpoint": 2,
+        "request_timeout_ms": 15000,
+        "max_concurrent_requests": 20,
+        "skip_preflight": true,
+        "send_transaction_retry_count": 3,
+        "rate_limit_requests_per_second": 50.0,
+        "rate_limit_burst_size": 100,
+        "endpoint_health_check_interval_ms": 30000,
+        "connection_refresh_interval_ms": 60000,
+        "cache_config": {
+          "enable_cache": true,
+          "max_cache_size": 1000,
+          "account_ttl_ms": 2000,
+          "blockhash_ttl_ms": 1000,
+          "slot_ttl_ms": 500,
+          "enable_prefetching": true
+        },
+        "batching_config": {
+          "enable_batching": true,
+          "max_batch_size": 10,
+          "max_batch_interval_ms": 10,
+          "min_batch_size": 2
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "base_delay_ms": 100,
+          "max_delay_ms": 1000,
+          "use_exponential_backoff": true,
+          "retry_on_timeout": true,
+          "retry_on_rate_limit": true,
+          "retry_on_connection_error": true
+        },
+        "endpoint_selection_strategy": "WeightedRandom",
+        "use_websocket": true
+      }
+    },
+    "screening": {
+      "enabled": true,
+      "config": {
+        "rpc_url": "https://api.devnet.solana.com",
+        "rpc_ws_url": "wss://api.devnet.solana.com",
+        "commitment_config": "confirmed",
+        "min_liquidity_usd": 1000.0,
+        "min_token_age_seconds": 60,
+        "max_rugpull_risk": 80,
+        "price_impact_threshold": 0.1,
+        "min_profit_bps": 30,
+        "max_tokens": 1000,
+        "max_liquidity_pools": 500,
+        "token_update_interval_ms": 10000,
+        "liquidity_update_interval_ms": 5000,
+        "enable_websocket_subscriptions": true,
+        "enable_dex_integration": true,
+        "scoring_config": {
+          "liquidity_weight": 0.4,
+          "volatility_weight": 0.2,
+          "social_weight": 0.2,
+          "code_quality_weight": 0.2,
+          "high_liquidity_threshold": 100000.0,
+          "medium_liquidity_threshold": 10000.0,
+          "high_volatility_threshold": 0.3,
+          "medium_volatility_threshold": 0.15
+        },
+        "rug_protection": {
+          "enabled": true,
+          "max_risk_score": 90,
+          "min_liquidity_usd": 5000.0,
+          "min_holders": 10,
+          "max_concentration_pct": 30.0,
+          "min_code_audit_score": 50
+        },
+        "tx_screening": {
+          "enabled": true,
+          "max_tx_size": 1232,
+          "max_instructions": 20
+        }
+      }
+    },
+    "execution": {
+      "enabled": true,
+      "config": {
+        "max_concurrent_transactions": 10,
+        "queue_capacity": 100,
+        "commitment_config": {
+          "commitment": "confirmed"
+        },
+        "skip_preflight": true,
+        "send_transaction_retry_count": 3,
+        "retry_backoff_ms": 100,
+        "max_retry_backoff_ms": 1000,
+        "default_priority_fee": 100000,
+        "default_compute_units": 200000,
+        "use_jito": false,
+        "jito_endpoint": "https://devnet.block-engine.jito.io/api",
+        "jito_auth_keypair": "",
+        "jito_auth_token": null,
+        "jito_tip_account": null,
+        "jito_tip_amount": 10000,
+        "jito_max_bundle_size": 5,
+        "jito_submission_timeout_ms": 5000,
+        "jito_min_tip_lamports": 10000,
+        "jito_max_tip_lamports": 1000000,
+        "jito_tip_adjustment_factor": 1.5,
+        "jito_use_dynamic_tips": true,
+        "jito_use_searcher_api": false,
+        "jito_searcher_api_url": null,
+        "jito_searcher_api_auth_token": null,
+        "simulate_transactions": true,
+        "enable_prioritization": true,
+        "default_transaction_timeout_ms": 30000,
+        "max_transaction_fee": 1000000,
+        "enable_fee_estimation": true
+      }
+    },
+    "arbitrage": {
+      "enabled": true,
+      "config": {
+        "rpc_url": "https://api.devnet.solana.com",
+        "websocket_url": "wss://api.devnet.solana.com",
+        "commitment_config": {
+          "commitment": "confirmed"
+        },
+        "min_profit_threshold_bps": 30,
+        "max_slippage_bps": 50,
+        "max_concurrent_executions": 2,
+        "max_queue_size": 20,
+        "confirmation_timeout_ms": 30000,
+        "price_update_interval_ms": 2000,
+        "pool_update_interval_ms": 10000,
+        "opportunity_detection_interval_ms": 2000,
+        "use_flash_loans": true,
+        "use_jito_bundles": false,
+        "prioritize_high_profit": true,
+        "dex_configs": [
+          {
+            "name": "Raydium",
+            "enabled": true,
+            "program_id": "675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8"
+          },
+          {
+            "name": "Orca",
+            "enabled": true,
+            "program_id": "9W959DqEETiGZocYWCQPaJ6sBmUzgfxXfqGeTEdp3aQP"
+          }
+        ],
+        "flash_loan_configs": [
+          {
+            "name": "Solend",
+            "enabled": true,
+            "program_id": "So1endDq2YkqhipRh3WViPa8hdiSpxWy6z3Z6tMCpAo"
+          }
+        ]
+      }
+    },
+    "risk": {
+      "enabled": true,
+      "config": {
+        "key_account": "",
+        "max_drawdown_pct": 20.0,
+        "max_exposure_pct": 0.5,
+        "max_token_concentration": 0.3,
+        "max_strategy_allocation": 0.4,
+        "max_risk_score": 80,
+        "max_consecutive_losses": 3,
+        "capital_update_interval_ms": 30000,
+        "circuit_breaker_check_interval_ms": 15000,
+        "risk_report_interval_ms": 60000,
+        "max_pnl_history_size": 100,
+        "circuit_breakers": [
+          {
+            "name": "drawdown",
+            "enabled": true,
+            "threshold": 10.0,
+            "timeframe_seconds": 1800,
+            "cooldown_seconds": 900
+          },
+          {
+            "name": "loss_streak",
+            "enabled": true,
+            "threshold": 2,
+            "timeframe_seconds": 300,
+            "cooldown_seconds": 600
+          }
+        ]
+      }
+    }
+  },
+  "strategy_config": {
+    "enabled": true,
+    "strategies": [
+      {
+        "id": "token_sniper_test",
+        "name": "Token Sniper (Test)",
+        "enabled": true,
+        "type": "TokenSniper",
+        "params": {
+          "min_liquidity_usd": 5000,
+          "max_age_seconds": 3600,
+          "min_holders": 10,
+          "max_risk_score": 80
+        }
+      },
+      {
+        "id": "cross_dex_arbitrage_test",
+        "name": "Cross-DEX Arbitrage (Test)",
+        "enabled": true,
+        "type": "Arbitrage",
+        "params": {
+          "min_profit_bps": 30,
+          "max_slippage_bps": 50,
+          "use_flash_loans": true,
+          "max_path_length": 2
+        }
+      }
+    ]
+  },
+  "strategy_run_interval_ms": 2000
+}

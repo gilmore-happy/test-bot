@@ -1,0 +1,17 @@
+{
+  "name": "docs-scraper",
+  "version": "1.0.0",
+  "description": "Configurable documentation scraper for any website",
+  "main": "configurable-scraper.js",
+  "type": "module",
+  "scripts": {
+    "start": "node configurable-scraper.js",
+    "scrape": "node configurable-scraper.js",
+    "serve": "node documentation-server.js"
+  },
+  "dependencies": {
+    "puppeteer": "^22.0.0",
+    "fs-extra": "^11.2.0",
+    "@modelcontextprotocol/sdk": "^0.1.0"
+  }
+}
