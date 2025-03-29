@@ -31,7 +31,7 @@ impl Default for EnvironmentType {
 
 /// Cloud provider type
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
-iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiipub enum CloudProvider {
+pub enum CloudProvider {
     /// Amazon Web Services
     Aws,
     
